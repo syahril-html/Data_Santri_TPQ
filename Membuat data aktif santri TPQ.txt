@@ -1,0 +1,35 @@
+Membuat data aktif santri TPQ
+Struktur Data (Entity Relationship Diagram)
+Untuk database, kita akan menggunakan model relasional. Berikut adalah tabel-tabel yang kamu butuhkan:
+
+Tabel santri
+
+id_santri (Primary Key, INT, Auto Increment)
+
+nama_lengkap (VARCHAR)
+
+alamat (TEXT)
+
+id_kelas (Foreign Key)
+
+nama_orang_tua (VARCHAR)
+
+Tabel kelas
+
+id_kelas (Primary Key, INT)
+
+nama_kelas (VARCHAR) - Contoh: Jilid 1, Jilid 2, Al-Qur'an
+
+id_guru (Foreign Key)
+
+Tabel absensi
+
+id_absensi (Primary Key, INT)
+
+id_santri (Foreign Key)
+
+tanggal (DATE)
+
+status (ENUM: 'Hadir', 'Izin', 'Sakit', 'Alpa')
+
+keterangan_progres (TEXT) - Contoh: "Jilid 3 Hal 15"

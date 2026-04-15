@@ -1,35 +1,32 @@
-Membuat data aktif santri TPQ
-Struktur Data (Entity Relationship Diagram)
-Untuk database, kita akan menggunakan model relasional. Berikut adalah tabel-tabel yang kamu butuhkan:
+1. Teknologi yang Digunakan (Stack)
+Project ini menggunakan arsitektur Serverless modern yang efisien dan gratis:
 
-Tabel santri
+Runtime: Node.js (sebagai lingkungan pengembangan di laptop kamu).
 
-id_santri (Primary Key, INT, Auto Increment)
+Platform Cloud: Cloudflare Workers (sebagai server yang menjalankan kode backend).
 
-nama_lengkap (VARCHAR)
+Database: Cloudflare D1 (Database SQL berbasis SQLite yang berjalan secara native di Cloudflare).
 
-alamat (TEXT)
+Deployment Tool: Wrangler CLI (alat baris perintah untuk login, membuat database, dan mengunggah kode).
 
-id_kelas (Foreign Key)
+Frontend: HTML5, CSS3 (Custom Dashboard Design), dan Vanilla JavaScript (untuk pengambilan data).
 
-nama_orang_tua (VARCHAR)
+2. Logika Fitur (Workflow)
+Logika aplikasi kamu dibagi menjadi tiga lapisan utama yang saling berkomunikasi:
 
-Tabel kelas
+A. Lapisan Data (Database D1)
+Struktur: Kamu mendefinisikan tabel santri melalui file schema.sql.
 
-id_kelas (Primary Key, INT)
+Fungsi: Menyimpan data permanen (Nama, Kelas, Status). Database ini tetap ada meskipun server dimatikan.
 
-nama_kelas (VARCHAR) - Contoh: Jilid 1, Jilid 2, Al-Qur'an
+B. Lapisan Server (Backend - src/index.js)
+Routing API: Worker bertindak sebagai "polisi lalu lintas". Jika ada permintaan ke /api/santri, ia akan mengambil data dari D1 dan mengirimkannya dalam format JSON.
 
-id_guru (Foreign Key)
+Static Assets: Jika ada permintaan ke halaman utama, Worker akan mengambil file dari folder public dan mengirimkannya ke browser pengguna.
 
-Tabel absensi
+C. Lapisan Tampilan (Frontend - public/)
+HTML: Menyediakan struktur tabel kosong dan elemen UI.
 
-id_absensi (Primary Key, INT)
+CSS: Memberikan gaya agar tabel terlihat profesional dan responsif (bisa dibuka di HP).
 
-id_santri (Foreign Key)
-
-tanggal (DATE)
-
-status (ENUM: 'Hadir', 'Izin', 'Sakit', 'Alpa')
-
-keterangan_progres (TEXT) - Contoh: "Jilid 3 Hal 15"
+JavaScript (Client-side): Saat halaman dibuka, script ini secara otomatis melakukan fetch() ke URL /api/santri, lalu memasukkan data tersebut ke dalam baris-baris tabel secara otomatis.

@@ -3,35 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Informasi Santri - TPQ</title>
+    <title>Dashboard TPQ</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Daftar Santri Aktif</h1>
-            <p>Sistem Manajemen Data Santri Terintegrasi</p>
-        </header>
-
-        <div class="card">
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nama Lengkap</th>
-                            <th>Kelas</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabel-santri">
-                        </tbody>
-                </table>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <h3>SISTEM ABSENSI</h3>
             </div>
-        </div>
-    </div>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li class="active"><a href="#">Data Siswa</a></li>
+                    <li><a href="#">Data Guru</a></li>
+                    <li><a href="#">Data Kelas</a></li>
+                </ul>
+            </nav>
+        </aside>
 
+        <main class="main-content">
+            <header class="top-header">
+                <span class="user-info">User: admin | Tanggal: 15-04-2026</span>
+            </header>
+            
+            <div id="modalSantri" class="modal">
+                <div class="modal-content">
+                    <h3>Tambah Santri Baru</h3>
+                    <form id="formSantri">
+                        <input type="text" id="nama" placeholder="Nama Lengkap" required>
+                        <input type="text" id="kelas" placeholder="Kelas / Jilid" required>
+                        <div class="modal-buttons">
+                            <button type="button" onclick="tutupModal()">Batal</button>
+                            <button type="submit">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="content-body">
+                <section class="card">
+                    <div class="card-header">
+                        <h2>Data Siswa</h2>
+                        <button class="btn-add">+ Tambah Santri</button>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>NIS</th>
+                                    <th>Nama</th>
+                                    <th>Kelas</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabel-santri">
+                                </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

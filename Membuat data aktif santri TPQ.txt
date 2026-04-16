@@ -1,32 +1,15 @@
-1. Teknologi yang Digunakan (Stack)
-Project ini menggunakan arsitektur Serverless modern yang efisien dan gratis:
+1. Frontend:
+HTML5
+CSS3
+Vanilla JavaScript (JS)
 
-Runtime: Node.js (sebagai lingkungan pengembangan di laptop kamu).
+2. Backend:
+Cloudflare Workers
+Wrangler CLI
 
-Platform Cloud: Cloudflare Workers (sebagai server yang menjalankan kode backend).
+3. Database:
+Cloudflare D1
 
-Database: Cloudflare D1 (Database SQL berbasis SQLite yang berjalan secara native di Cloudflare).
-
-Deployment Tool: Wrangler CLI (alat baris perintah untuk login, membuat database, dan mengunggah kode).
-
-Frontend: HTML5, CSS3 (Custom Dashboard Design), dan Vanilla JavaScript (untuk pengambilan data).
-
-2. Logika Fitur (Workflow)
-Logika aplikasi kamu dibagi menjadi tiga lapisan utama yang saling berkomunikasi:
-
-A. Lapisan Data (Database D1)
-Struktur: Kamu mendefinisikan tabel santri melalui file schema.sql.
-
-Fungsi: Menyimpan data permanen (Nama, Kelas, Status). Database ini tetap ada meskipun server dimatikan.
-
-B. Lapisan Server (Backend - src/index.js)
-Routing API: Worker bertindak sebagai "polisi lalu lintas". Jika ada permintaan ke /api/santri, ia akan mengambil data dari D1 dan mengirimkannya dalam format JSON.
-
-Static Assets: Jika ada permintaan ke halaman utama, Worker akan mengambil file dari folder public dan mengirimkannya ke browser pengguna.
-
-C. Lapisan Tampilan (Frontend - public/)
-HTML: Menyediakan struktur tabel kosong dan elemen UI.
-
-CSS: Memberikan gaya agar tabel terlihat profesional dan responsif (bisa dibuka di HP).
-
-JavaScript (Client-side): Saat halaman dibuka, script ini secara otomatis melakukan fetch() ke URL /api/santri, lalu memasukkan data tersebut ke dalam baris-baris tabel secara otomatis.
+4. Alat Pendukung:
+VS Code
+Node.js & NPM

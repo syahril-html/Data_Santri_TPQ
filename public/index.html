@@ -26,25 +26,25 @@
             <header class="top-header">
                 <span class="user-info">User: admin | Tanggal: 15-04-2026</span>
             </header>
-            
-            <div id="modalSantri" class="modal">
-                <div class="modal-content">
-                    <h3>Tambah Santri Baru</h3>
-                    <form id="formSantri">
-                        <input type="text" id="nama" placeholder="Nama Lengkap" required>
-                        <input type="text" id="kelas" placeholder="Kelas / Jilid" required>
-                        <div class="modal-buttons">
-                            <button type="button" onclick="tutupModal()">Batal</button>
-                            <button type="submit">Simpan</button>
-                        </div>
-                    </form>
+
+            <div id="areaTambah" style="display: none; margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px;">
+                <h3>Tambah Santri Baru</h3>
+                <input type="text" id="namaBaru" placeholder="Nama Lengkap">
+                <input type="text" id="kelasBaru" placeholder="Kelas / Jilid">
+                
+                <div style="margin-top: 10px;">
+                    <button onclick="simpanSantri()">Simpan</button>
+                    <button onclick="toggleTambah()" style="background: #e74c3c; color: white;">Batal</button>
                 </div>
             </div>
+
             <div class="content-body">
                 <section class="card">
-                    <div class="card-header">
+                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                         <h2>Data Siswa</h2>
-                        <button class="btn-add">+ Tambah Santri</button>
+                        <button onclick="toggleTambah()" class="btn-add" style="background-color: #2ecc71; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">
+                            + Tambah Santri
+                        </button>
                     </div>
                     <div class="table-container">
                         <table>
@@ -65,6 +65,30 @@
             </div>
         </main>
     </div>
+        <div id="modalEdit" class="modal" style="display:none; position:fixed; z-index:100; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.5);">
+        <div style="background:white; margin:10% auto; padding:20px; width:300px; border-radius:8px;">
+            <h3>Edit Data Santri</h3>
+            <input type="hidden" id="edit-id">
+            <div style="margin-bottom:10px;">
+                <label>Nama:</label><br>
+                <input type="text" id="edit-nama" style="width:100%;">
+            </div>
+            <div style="margin-bottom:10px;">
+                <label>Kelas:</label><br>
+                <input type="text" id="edit-kelas" style="width:100%;">
+            </div>
+            <button onclick="simpanEdit()">Update Data</button>
+            <button onclick="document.getElementById('modalEdit').style.display='none'">Batal</button>
+        </div>
+    </div>
+    <div id="modalDetail" class="modal" style="display:none; position:fixed; z-index:100; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.6);">
+    <div style="background:white; margin:10% auto; padding:25px; width:400px; border-radius:12px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+        <h3 style="border-bottom: 2px solid #eee; padding-bottom: 10px;">Detail Informasi Santri</h3>
+        <div id="isiDetail" style="line-height: 2; margin: 15px 0;">
+            </div>
+        <button onclick="document.getElementById('modalDetail').style.display='none'" style="width:100%; padding:10px; background:#34495e; color:white; border:none; border-radius:5px; cursor:pointer;">Tutup</button>
+    </div>
+</div>
     <script src="script.js"></script>
 </body>
 </html>

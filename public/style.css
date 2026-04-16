@@ -63,11 +63,11 @@ table {
 }
 
 th {
-    background-color: #f8f9fa;
-    color: #333;
+    background-color: #ffc7c7;
+    color: #000;
     text-align: left; /* Biar judul kolom di kiri semua */
     padding: 15px;
-    border-bottom: 2px solid #dee2e6;
+    border-bottom: 2px solid #a2a5a8;
 }
 
 td {

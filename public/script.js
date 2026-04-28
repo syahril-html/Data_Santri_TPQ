@@ -115,7 +115,7 @@ async function ambilData() {
         }
     };
 
-        // 1. Fungsi untuk menampilkan Modal dan mengisi datanya
+        // 1. Untuk menampilkan Modal dan mengisi datanya
     window.editSantri = async function(id) {
         try {
             const res = await fetch('/api/santri');
@@ -149,7 +149,7 @@ async function ambilData() {
             alert("Server sedang mati! Pastikan 'npx wrangler dev' sudah jalan.");
         }
     };
-    // 2. Fungsi untuk mengirim perubahan ke Database
+    // 2. Untuk mengirim perubahan ke Database
     document.getElementById('formEdit').addEventListener('submit', async (e) => {
         e.preventDefault(); // Sangat penting agar halaman tidak reload sendiri
         
@@ -238,11 +238,11 @@ async function ambilData() {
             if (response.ok) {
                 alert("Santri baru berhasil ditambahkan!");
                     
-                // Kosongkan form setelah simpan
+                // Mengosongkan form setelah simpan
                 document.getElementById('namaBaru').value = '';
                 document.getElementById('kelasBaru').value = '';
                     
-                // Sembunyikan area tambah dan refresh tabel
+                // Menyembunyikan area tambah dan refresh tabel
                 toggleTambah(); 
                 ambilData(); 
         } else {

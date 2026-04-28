@@ -1,10 +1,8 @@
-/* Layout Utama */
 .dashboard-container {
     display: flex;
     min-height: 100vh;
 }
 
-/* Sidebar */
 .sidebar {
     width: 240px;
     background-color: #502c2c;
@@ -68,7 +66,6 @@ tbody tr:nth-child(even) {
     background-color: #f9f9f9; 
 }
 
-/* Warna baris saat disentuh mouse */
 tr:hover {
     background-color: #f1f1f1;
 }
@@ -96,7 +93,7 @@ tr:hover {
     color: #333;
 }
 
-/* Tombol Tambah Versi Rapih */
+
 .btn-add {
     background-color: #f39c12; /* Warna orange seperti di gambar 2 */
     color: white;
@@ -134,21 +131,18 @@ td:last-child {
     gap: 5px;
 }
 
-/* Menentukan lebar spesifik untuk kolom pertama (No) */
 th:first-child, 
 td:first-child {
-    width: 50px;       /* Atur lebar hanya 50 pixel */
-    text-align: center; /* Nomor biasanya lebih rapi kalau di tengah */
+    width: 50px;
+    text-align: center; 
     min-width: 50px;
 }
 
-/* Supaya kolom Nama bisa mengambil sisa ruang yang ada */
 th:nth-child(2), 
 td:nth-child(2) {
-    min-width: 200px;  /* Nama orang biasanya panjang, beri ruang lebih */
+    min-width: 200px; 
 }
 
-/* Tambahkan ini di style.css */
 .badge-active {
     background-color: #d4edda;
     color: #155724;
@@ -170,21 +164,6 @@ td:nth-child(2) {
 .btn-edit { background: #f1c40f; color: white; }
 .btn-delete { background: #e74c3c; color: white; }
 
-/* Pastikan ID ini sama dengan yang ada di index.html */
-#modalTambah, #modalEdit {
-    display: none; /* Sembunyi dulu */
-    position: fixed; /* Melayang */
-    z-index: 9999; /* Di atas segalanya */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Background gelap */
-    justify-content: center;
-    align-items: center;
-}
-
-/* Kotak putih di tengah modal */
 .modal-content {
     background-color: white;
     padding: 30px;
@@ -193,4 +172,36 @@ td:nth-child(2) {
     max-width: 800px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     position: relative;
+}
+
+#modalTambah, #modalEdit {
+    display: none; 
+    position: fixed; 
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
 }

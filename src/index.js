@@ -32,7 +32,7 @@ if (request.method === "PUT" && url.pathname.startsWith("/api/santri/")) {
       .bind(
         body.nama, body.nik, body.ttl, body.kelas, 
         body.no_kk, body.ayah, body.nik_ayah, body.ibu, body.nik_ibu, 
-        id // id diletakkan di paling akhir sesuai urutan tanda tanya (?)
+        id 
       )
       .run();
       

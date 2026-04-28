@@ -1,15 +1,4 @@
-1. Frontend:
-HTML5
-CSS3
-Vanilla JavaScript (JS)
+https://welcome.developers.workers.dev/wrangler-oauth-consent-granted
+npx wrangler d1 execute Data_santri_TPQ --remote --command="SELECT * FROM santri"
+https://tpq-app.syahrilril921.workers.dev/ 
 
-2. Backend:
-Cloudflare Workers
-Wrangler CLI
-
-3. Database:
-Cloudflare D1
-
-4. Alat Pendukung:
-VS Code
-Node.js & NPM

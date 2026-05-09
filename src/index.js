@@ -1,6 +1,7 @@
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    const method = request.method;
 
     // 1. Logika HAPUS (DELETE)
     if (request.method === "DELETE" && url.pathname.startsWith("/api/santri/")) {
@@ -80,6 +81,21 @@ if (request.method === "PUT" && url.pathname.startsWith("/api/santri/")) {
         return Response.json(results);
       } catch (e) {
         return new Response("Gagal mengambil data", { status: 500 });
+      }
+    }
+
+    // Di dalam src/index.js, pastikan di dalam blok async fetch(request, env)
+    if (url.pathname === "/api/guru" && method === "GET") {
+      try {
+        // Gunakan query paling simpel dulu untuk memastikan tabelnya bisa dibaca
+        const { results } = await env.DB.prepare("SELECT * FROM guru").all();
+        return Response.json(results || []);
+      } catch (err) {
+        // Jika crash, kirimkan pesan errornya ke browser supaya kita tahu apa yang salah
+        return new Response("Database Error: " + err.message, { 
+          status: 500,
+          headers: { "Content-Type": "text/plain" }
+        });
       }
     }
 

@@ -257,3 +257,28 @@ async function ambilData() {
 }
 
 ambilData();
+
+function bukaMenuGuru() {
+    // Sembunyikan konten santri, tampilkan guru
+    document.getElementById('konten-santri').style.display = 'none';
+    document.getElementById('konten-guru').style.display = 'block';
+
+    // Update tampilan sidebar
+    document.getElementById('menu-santri').classList.remove('active');
+    document.getElementById('menu-guru').classList.add('active');
+
+    // Panggil fungsi muat data (jika sudah ada)
+    if (typeof muatDataGuru === "function") {
+        muatDataGuru();
+    }
+}
+
+function bukaMenuSantri() {
+    // 1. Tampilkan/Sembunyikan Konten
+    document.getElementById('konten-guru').style.display = 'none';
+    document.getElementById('konten-santri').style.display = 'block';
+
+    // 2. Atur Menu yang Aktif (Visual)
+    document.getElementById('menu-santri').classList.add('active');
+    document.getElementById('menu-guru').classList.remove('active');
+}

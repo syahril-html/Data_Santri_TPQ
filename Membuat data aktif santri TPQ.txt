@@ -1,4 +1,4 @@
 https://welcome.developers.workers.dev/wrangler-oauth-consent-granted
 npx wrangler d1 execute Data_santri_TPQ --remote --command="SELECT * FROM santri"
-https://tpq-app.syahrilril921.workers.dev/ 
+
 

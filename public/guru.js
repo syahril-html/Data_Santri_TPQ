@@ -62,6 +62,7 @@ function renderTabelGuru(data) {
                 <td>${guru.nip}</td>
                 <td>${guru.jabatan}</td>
                 <td>
+                    <button class="btn-detail" onclick="detailGuru('${guru.id}')" style="background:#3498db; border:none; padding:5px 8px; border-radius:4px; cursor:pointer;">detail</button>
                     <button class="btn-edit" onclick="editGuru('${guru.id}')" style="background:#ffc107; border:none; padding:5px 8px; border-radius:4px; cursor:pointer;">Edit</button>
                     <button class="btn-delete" onclick="hapusGuru('${guru.id}')" style="background:#dc3545; color:white; border:none; padding:5px 8px; border-radius:4px; cursor:pointer;">Hapus</button>
                 </td>

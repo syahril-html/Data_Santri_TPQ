@@ -6,11 +6,13 @@
 // Konfigurasi URL API Cloudflare kamu
 const API_URL = 'https://tpq-app.syahrilril921.workers.dev';
 
-// Tunggu sampai DOM (HTML) benar-benar siap
 document.addEventListener('DOMContentLoaded', () => {
     console.log("Sistem Data Guru Terkoneksi...");
     
-    // Inisialisasi Event Listener untuk Form Tambah
+    // 1. Jalankan fungsi ambil data agar tabel terisi saat halaman dibuka
+    muatDataGuru(); 
+    
+    // 2. Inisialisasi Event Listener untuk Form
     const formGuru = document.getElementById('formTambahGuru');
     if (formGuru) {
         formGuru.addEventListener('submit', simpanDataGuru);
@@ -104,7 +106,7 @@ async function simpanDataGuru(e) {
         if (res.ok) {
             alert("Berhasil simpan data guru!");
             tutupModalGuru();
-            muatDataGuru(); // Refresh tabel
+            muatDataGuru(); 
         } else {
             const errorText = await res.text();
             throw new Error(errorText);
@@ -123,7 +125,7 @@ async function simpanDataGuru(e) {
  */
 function bukaModalGuru() {
     const modal = document.getElementById('modalTambahGuru');
-    if (modal) modal.style.display = 'block';
+    if (modal) modal.style.display = 'flex';
 }
 
 function tutupModalGuru() {
@@ -138,3 +140,29 @@ function tutupModalGuru() {
 window.muatDataGuru = muatDataGuru;
 window.bukaModalGuru = bukaModalGuru;
 window.tutupModalGuru = tutupModalGuru;
+
+async function hapusGuru(id) {
+    if (!confirm("Apakah Anda yakin ingin menghapus data guru ini?")) return;
+
+    try {
+        // Gunakan id yang dikirim dari tombol
+        const response = await fetch(`${API_URL}/api/guru/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            alert("Data guru berhasil dihapus!");
+            // Refresh tabel tanpa reload halaman penuh
+            muatDataGuru(); 
+        } else {
+            const pesanError = await response.text();
+            alert("Gagal menghapus: " + pesanError);
+        }
+    } catch (error) {
+        console.error("Error Hapus:", error);
+        alert("Koneksi gagal atau masalah CORS.");
+    }
+}

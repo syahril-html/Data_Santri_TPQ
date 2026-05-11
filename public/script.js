@@ -206,7 +206,7 @@ async function ambilData() {
                     <hr>
                     <small style="color:gray;">Terakhir diperbarui: ${new Date().toLocaleDateString('id-ID')}</small>
                 `;
-                document.getElementById('modalDetail').style.display = 'block';
+                document.getElementById('modalDetail').style.display = 'flex';
             }
         } catch (error) {
             console.error("Gagal mengambil detail:", error);
